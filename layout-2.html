@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8"/>
+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
+        <meta content="#0b0b0f" name="theme-color"/>
+        <meta content="Loja da Fernanda: achadinhos para casa e para você, a partir de R$ 1,00." name="description"/>
+        <title>
+            Loja da Fernanda · Dark / Bold
+        </title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            html {
+                scroll-behavior: smooth;
+                scroll-padding-top: 24px;
+            }
+
+            body {
+                margin: 0;
+                font-family: Arial, Helvetica, sans-serif;
+                line-height: 1.5;
+            }
+
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            button, input {
+                font: inherit;
+            }
+
+            button {
+                cursor: pointer;
+            }
+
+            button, a {
+                -webkit-tap-highlight-color: transparent;
+                touch-action: manipulation;
+            }
+
+            button: focus-visible, a:focus-visible, input:focus-visible {
+                outline: 3px solid #ffcf37;
+                outline-offset: 4px;
+            }
+
+            h1, h2, h3, p {
+                margin: 0;
+            }
+
+            svg {
+                max-width: 100%;
+            }
+
+            [hidden] {
+                display: none !important;
+            }
+
+            .wrap {
+                width: min(1180px, calc(100% - 32px));
+                margin-inline: auto;
+            }
+
+            .announcement {
+                padding: 9px 16px;
+                text-align: center;
+                font-size: 11px;
+                font-weight: 700;
+            }
+
+            .header {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 20px;
+                padding-block: 22px;
+            }
+
+            .brand {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-size: 19px;
+                font-weight: 900;
+                line-height: 1.1;
+            }
+
+            .brand small {
+                display: block;
+                font-size: 9px;
+                font-weight: 400;
+                letter-spacing: 1px;
+                margin-top: 6px;
+            }
+
+            .mark {
+                display: grid;
+                place-items: center;
+                width: 40px;
+                height: 43px;
+                background: #a855f7;
+                color: white;
+                border-radius: 12px 12px 12px 2px;
+                font-size: 28px;
+                transform: rotate(-6deg);
+            }
+
+            .search {
+                display: flex;
+                width: 100%;
+                order: 3;
+                border: 1px solid #7776;
+                border-radius: 8px;
+                overflow: hidden;
+            }
+
+            .search input {
+                min-width: 0;
+                width: 100%;
+                background: transparent;
+                border: 0;
+                color: inherit;
+                padding: 12px;
+            }
+
+            .search button {
+                border: 0;
+                background: transparent;
+                color: inherit;
+                padding: 10px 15px;
+                font-size: 24px;
+            }
+
+            .cart {
+                margin-left: auto;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                border: 0;
+                background: transparent;
+                color: inherit;
+                font-size: 12px;
+            }
+
+            .count {
+                display: inline-grid;
+                place-items: center;
+                width: 22px;
+                height: 22px;
+                background: #a855f7;
+                color: white;
+                border-radius: 50%;
+                font-size: 11px;
+            }
+
+            .eyebrow {
+                display: block;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                font-size: 10px;
+                font-weight: 800;
+                margin-bottom: 12px;
+            }
+
+            .section-head {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: end;
+                justify-content: space-between;
+                gap: 18px;
+                margin-bottom: 24px;
+            }
+
+            h2 {
+                font-size: clamp(27px, 4vw, 42px);
+                line-height: 1.08;
+                letter-spacing: -1.4px;
+            }
+
+            .section-head p {
+                margin-top: 10px;
+                font-size: 13px;
+            }
+
+            .cta {
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+                padding: 14px 22px;
+                border: 0;
+                border-radius: 6px;
+                font-weight: 800;
+                font-size: 13px;
+            }
+
+            section {
+                margin-block: 48px;
+            }
+
+            .whatsapp {
+                position: fixed;
+                right: 18px;
+                bottom: 20px;
+                width: 54px;
+                height: 54px;
+                display: grid;
+                place-items: center;
+                background: #16b65d;
+                color: white;
+                border: 3px solid white;
+                border-radius: 50%;
+                box-shadow: 0 5px 24px #0004;
+                z-index: 30;
+            }
+
+            .toast {
+                position: fixed;
+                bottom: 28px;
+                left: 50%;
+                transform: translate(-50%, 15px);
+                width: max-content;
+                max-width: calc(100% - 110px);
+                padding: 13px 18px;
+                border-radius: 10px;
+                background: #fff;
+                color: #21102c;
+                box-shadow: 0 5px 24px #0004;
+                font-size: 12px;
+                z-index: 50;
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+                transition: opacity .2s, transform .2s, visibility .2s;
+            }
+
+            .toast.show {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+                transform: translate(-50%, 0);
+            }
+
+            .empty {
+                padding: 20px;
+                text-align: center;
+            }
+
+            .footer-meta {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                gap: 15px;
+                padding-block: 22px;
+                font-size: 10px;
+                border-top: 1px solid #8885;
+            }
+
+            @media (min-width: 760px) {
+                .wrap {
+                    width: min(1180px, calc(100% - 64px));
+                }
+                .search {
+                    width: auto;
+                    flex: 1;
+                    order: 0;
+                    margin-inline: 30px;
+                }
+                .cart {
+                    margin-left: 0;
+                }
+                section {
+                    margin-block: 76px;
+                }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                *, *::before, *::after {
+                    animation: none !important;
+                    transition: none !important;
+                    scroll-behavior: auto !important;
+                }
+            }
+
+            body {
+                background: #0b0b0f;
+                color: #f7f4ff;
+            }
+
+            .announcement {
+                background: #b2ff73;
+                color: #101408;
+            }
+
+            .header {
+                border-bottom: 1px solid #ffffff20;
+            }
+
+            .search {
+                background: #19171e;
+            }
+
+            .hero {
+                position: relative;
+                isolation: isolate;
+                overflow: hidden;
+                padding: 48px 0 40px;
+                background: radial-gradient(ellipse at 85% 80%, #6722b577, transparent 65%);
+            }
+
+            .hero::after {
+                content: '✳';
+                position: absolute;
+                right: -35px;
+                top: -40px;
+                font-size: 350px;
+                color: #be72ff16;
+                z-index: -1;
+                line-height: 1;
+            }
+
+            .hero-top {
+                display: flex;
+                gap: 20px;
+                justify-content: space-between;
+                color: #c0b3d0;
+                font-size: 10px;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+            }
+
+            h1 {
+                font-size: clamp(48px, 8.7vw, 112px);
+                line-height: .92;
+                letter-spacing: -3px;
+                margin: 30px 0;
+                font-weight: 900;
+            }
+
+            h1 span {
+                display: block;
+                color: #c181ff;
+            }
+
+            h1 strong {
+                color: #fff;
+                font-size: 1.42em;
+                letter-spacing: -5px;
+            }
+
+            .hero-bottom {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 25px;
+                justify-content: space-between;
+            }
+
+            .hero-bottom p {
+                max-width: 360px;
+                font-size: 14px;
+                color: #c2b8cc;
+            }
+
+            .cta {
+                background: #b2ff73;
+                color: #0b0b0f;
+            }
+
+            .ticker {
+                overflow: hidden;
+                padding: 12px 0;
+                background: #9b43ec;
+                transform: none;
+                margin: 5px 0 12px;
+            }
+
+            .ticker-track {
+                display: flex;
+                gap: 40px;
+                width: max-content;
+                animation: ticker 28s linear infinite;
+                font-size: 13px;
+                font-weight: 900;
+            }
+
+            @keyframes ticker {
+                to {
+                    transform: translateX(-50%);
+                }
+            }
+
+            .section-head p, .unit {
+                color: #afa4bd;
+            }
+
+            .bento {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px;
+            }
+
+            .category {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                overflow: hidden;
+                min-height: 154px;
+                padding: 20px;
+                border: 1px solid #ffffff24;
+                border-radius: 14px;
+                background: #1a1722;
+            }
+
+            .category strong {
+                font-size: 20px;
+                line-height: 1.1;
+                letter-spacing: -.7px;
+            }
+
+            .category small {
+                display: block;
+                color: #c6b3dd;
+                font-size: 10px;
+                margin-top: 8px;
+            }
+
+            .category .icon {
+                align-self: end;
+                font-size: 43px;
+            }
+
+            .category:first-child {
+                grid-column: 1 / -1;
+                min-height: 205px;
+                background: linear-gradient(120deg, #4b1e75, #1b1329);
+            }
+
+            .category:first-child strong {
+                font-size: 34px;
+            }
+
+            .category:first-child .icon {
+                position: absolute;
+                right: 25px;
+                bottom: 13px;
+                font-size: 95px;
+                transform: rotate(-15deg);
+            }
+
+            .category:nth-child(4) {
+                background: #b2ff73;
+                color: #15200b;
+            }
+
+            .category:nth-child(4) small {
+                color: #345021;
+            }
+
+            .category:last-child {
+                min-height: 154px;
+                background: #292036;
+            }
+
+            .flash {
+                padding: 30px 0;
+                border-block: 1px solid #ffffff24;
+            }
+
+            .timer {
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 10px;
+                font-size: 11px;
+            }
+
+            .clock {
+                padding: 10px 13px;
+                background: #251735;
+                border: 1px solid #8645b6;
+                border-radius: 7px;
+                color: #d5a3ff;
+                font-size: 20px;
+                font-weight: 800;
+                font-variant-numeric: tabular-nums;
+            }
+
+            .carousel {
+                display: grid;
+                grid-auto-flow: column;
+                grid-auto-columns: min(78vw, 270px);
+                gap: 16px;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                padding: 8px 0 23px;
+                scrollbar-color: #a855f7 #21182b;
+            }
+
+            .product {
+                min-width: 0;
+                scroll-snap-align: start;
+                border: 1px solid #ffffff20;
+                background: #17141e;
+                border-radius: 15px;
+                overflow: hidden;
+                transition: border-color .2s, box-shadow .2s;
+            }
+
+            .product:hover {
+                border-color: #b568ff;
+                box-shadow: 0 0 24px #9333ea28;
+            }
+
+            .product-art {
+                display: grid;
+                place-items: center;
+                position: relative;
+                height: 190px;
+                background: radial-gradient(ellipse at center, #66379755, transparent 70%);
+            }
+
+            .product-emoji {
+                font-size: 88px;
+                filter: drop-shadow(0 15px 12px #0008);
+            }
+
+            .badge {
+                position: absolute;
+                left: 16px;
+                top: 14px;
+                font-size: 9px;
+                color: #cf9bff;
+                letter-spacing: 1px;
+            }
+
+            .product-info {
+                padding: 19px;
+            }
+
+            .product-info > small {
+                color: #b78ad5;
+                text-transform: uppercase;
+                font-size: 9px;
+                letter-spacing: 1px;
+            }
+
+            .product h3 {
+                font-size: 15px;
+                min-height: 46px;
+                margin-top: 6px;
+            }
+
+            .unit {
+                font-size: 10px;
+                margin: 6px 0 14px;
+            }
+
+            .buy-row {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 8px;
+            }
+
+            .price {
+                font-size: 34px;
+                letter-spacing: -1.5px;
+            }
+
+            .price small {
+                font-size: 13px;
+                letter-spacing: 0;
+                color: #b7a7c6;
+            }
+
+            .add {
+                width: 44px;
+                height: 44px;
+                border-radius: 50%;
+                border: 1px solid #ae6cff;
+                background: #a855f7;
+                color: #fff;
+                font-size: 27px;
+                box-shadow: 0 0 18px #a855f740;
+            }
+
+            .scroll-hint {
+                font-size: 10px;
+                color: #b8a5cb;
+                margin-top: 13px;
+            }
+
+            .kit-section {
+                display: grid;
+                gap: 30px;
+                padding: 28px;
+                border-radius: 18px;
+                background: linear-gradient(135deg, #261635, #17131d);
+                border: 1px solid #71428b;
+            }
+
+            .kit-section h2 {
+                font-size: 44px;
+            }
+
+            .kit-section p {
+                color: #c3afcf;
+                margin: 15px 0;
+                font-size: 13px;
+            }
+
+            .kit-options {
+                display: grid;
+                gap: 10px;
+            }
+
+            .kit-options label {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 14px;
+                border: 1px solid #ffffff25;
+                border-radius: 8px;
+                cursor: pointer;
+                font-size: 12px;
+            }
+
+            .kit-options label:has(input:checked) {
+                background: #a855f71c;
+                border-color: #a855f7;
+            }
+
+            .kit-options input {
+                accent-color: #b2ff73;
+                width: 18px;
+                height: 18px;
+            }
+
+            .kit-options span {
+                margin-left: auto;
+                font-weight: 800;
+            }
+
+            .kit-summary {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 12px;
+                margin-top: 20px;
+            }
+
+            .kit-total {
+                font-size: 28px;
+                font-weight: 900;
+            }
+
+            .kit-submit:disabled {
+                opacity: .4;
+                cursor: default;
+            }
+
+            .services {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 24px;
+                padding-block: 30px;
+            }
+
+            .services div {
+                border-top: 1px solid #ffffff30;
+                padding-top: 15px;
+            }
+
+            .services b {
+                display: block;
+                font-size: 13px;
+                margin-bottom: 8px;
+            }
+
+            .services p {
+                color: #afa4bd;
+                font-size: 11px;
+            }
+
+            footer {
+                background: #16121d;
+                margin-top: 60px;
+            }
+
+            .footer-top {
+                display: grid;
+                gap: 30px;
+                padding-block: 40px;
+            }
+
+            .footer-top h2 {
+                font-size: clamp(35px, 5vw, 60px);
+                max-width: 600px;
+            }
+
+            .footer-top h2 span {
+                color: #b2ff73;
+            }
+
+            .footer-top p {
+                font-size: 12px;
+                color: #baabc6;
+                margin-block: 15px;
+            }
+
+            .footer-links {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+                font-size: 11px;
+                margin-top: 22px;
+            }
+
+            .mobile-nav {
+                position: fixed;
+                bottom: 0;
+                inset-inline: 0;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                padding: 9px 8px calc(9px + env(safe-area-inset-bottom));
+                background: #18121ff5;
+                backdrop-filter: blur(14px);
+                border-top: 1px solid #73508d;
+                z-index: 40;
+            }
+
+            .mobile-nav a, .mobile-nav button {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 2px;
+                margin: 0;
+                padding: 0;
+                font-size: 10px;
+            }
+
+            .mobile-nav .nav-icon {
+                font-size: 19px;
+                height: 26px;
+            }
+
+            .mobile-nav .count {
+                width: 19px;
+                height: 19px;
+                font-size: 10px;
+            }
+
+            .whatsapp {
+                bottom: calc(88px + env(safe-area-inset-bottom));
+            }
+
+            .toast {
+                bottom: calc(90px + env(safe-area-inset-bottom));
+            }
+
+            body {
+                padding-bottom: 70px;
+            }
+
+            @media (min-width: 760px) {
+                body {
+                    padding-bottom: 0;
+                }
+                .hero {
+                    padding-block: 55px 60px;
+                }
+                h1 {
+                    letter-spacing: -6px;
+                    margin-block: 40px;
+                }
+                .bento {
+                    grid-template-columns: 2fr 1fr 1fr;
+                    grid-template-rows: 170px 170px;
+                }
+                .category:first-child {
+                    grid-column: auto;
+                    grid-row: span 2;
+                }
+                .category:first-child strong {
+                    font-size: 42px;
+                }
+                .category:first-child .icon {
+                    font-size: 130px;
+                }
+
+                .kit-section {
+                    grid-template-columns: 1fr 1.1fr;
+                    gap: 65px;
+                    padding: 50px;
+                }
+                .kit-options {
+                    grid-template-columns: 1fr 1fr;
+                }
+                .services {
+                    grid-template-columns: repeat(4, minmax(0, 1fr));
+                }
+                .footer-top {
+                    grid-template-columns: 1.6fr 1fr;
+                    align-items: end;
+                }
+                .mobile-nav {
+                    display: none;
+                }
+                .whatsapp {
+                    bottom: 24px;
+                }
+                .toast {
+                    bottom: 28px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="announcement">
+            🚚 Frete grátis acima de R$ 79,90 · Todo o Brasil
+        </div>
+        <header class="wrap header" id="inicio">
+            <a class="brand" href="#inicio">
+                <span aria-hidden="true" class="mark">
+                    f.
+                </span>
+                <span>
+                    Loja da Fernanda
+                    <small>
+                        Nome e marca ilustrativos
+                    </small>
+                </span>
+            </a>
+            <form class="search" role="search">
+                <input aria-label="Buscar produtos" id="busca" placeholder="Encontre seu próximo achadinho" type="search"/>
+                <button aria-label="Buscar" type="submit">
+                    ⌕
+                </button>
+            </form>
+            <button aria-label="Carrinho com 0 itens" class="cart">
+                <span aria-hidden="true">
+                    🛒
+                </span>
+                <span class="count">
+                    0
+                </span>
+            </button>
+        </header>
+        <main>
+            <div class="hero">
+                <div class="wrap">
+                    <div class="hero-top">
+                        <span>
+                            Preço pequeno. Atitude gigante.
+                        </span>
+                        <span>
+                            Vol. 01 / 2026
+                        </span>
+                    </div>
+                    <h1>
+                        TUDO A PARTIR
+                        <span>
+                            DE
+                            <strong>
+                                R$ 1
+                            </strong>
+                            <small>
+                                ,00
+                            </small>
+                        </span>
+                    </h1>
+                    <div class="hero-bottom">
+                        <p>
+                            Achados para sua casa, seu rolê e seu dia a dia. Aqui, pouco dinheiro rende muito.
+                        </p>
+                        <a class="cta" href="#ofertas">
+                            Explorar os achados ↗
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div aria-label="Ofertas: achados a partir de um real, novidades toda semana, desconto no Pix" class="ticker">
+                <div aria-hidden="true" class="ticker-track">
+                    <span>
+                        ✳ ACHADOS A PARTIR DE R$ 1
+                    </span>
+                    <span>
+                        ✳ NOVIDADES TODA SEMANA
+                    </span>
+                    <span>
+                        ✳ 5% OFF NO PIX
+                    </span>
+                    <span>
+                        ✳ ACHADOS A PARTIR DE R$ 1
+                    </span>
+                    <span>
+                        ✳ NOVIDADES TODA SEMANA
+                    </span>
+                    <span>
+                        ✳ 5% OFF NO PIX
+                    </span>
+                    <span>
+                        ✳ ACHADOS A PARTIR DE R$ 1
+                    </span>
+                    <span>
+                        ✳ NOVIDADES TODA SEMANA
+                    </span>
+                    <span>
+                        ✳ 5% OFF NO PIX
+                    </span>
+                    <span>
+                        ✳ ACHADOS A PARTIR DE R$ 1
+                    </span>
+                    <span>
+                        ✳ NOVIDADES TODA SEMANA
+                    </span>
+                    <span>
+                        ✳ 5% OFF NO PIX
+                    </span>
+                </div>
+            </div>
+            <div class="wrap">
+                <section id="categorias">
+                    <div class="section-head">
+                        <div>
+                            <span class="eyebrow">
+                                01 / Encontre sua vibe
+                            </span>
+                            <h2>
+                                Um pouco de tudo.
+                                <br/>
+                                Um preço de outro mundo.
+                            </h2>
+                        </div>
+                        <a href="#ofertas">
+                            Todos os achados ↗
+                        </a>
+                    </div>
+                    <div class="bento">
+                        <a class="category" data-filter="Cozinha" href="#ofertas">
+                            <div>
+                                <strong>
+                                    Cozinha ↗
+                                </strong>
+                                <small>
+                                    O tempero é economizar
+                                </small>
+                            </div>
+                            <span aria-hidden="true" class="icon">
+                                🍳
+                            </span>
+                        </a>
+                        <a class="category" data-filter="Limpeza" href="#ofertas">
+                            <div>
+                                <strong>
+                                    Limpeza ↗
+                                </strong>
+                                <small>
+                                    Casa em dia
+                                </small>
+                            </div>
+                            <span aria-hidden="true" class="icon">
+                                🧽
+                            </span>
+                        </a>
+                        <a class="category" data-filter="Papelaria" href="#ofertas">
+                            <div>
+                                <strong>
+                                    Papelaria ↗
+                                </strong>
+                                <small>
+                                    Ideias no papel
+                                </small>
+                            </div>
+                            <span aria-hidden="true" class="icon">
+                                ✏️
+                            </span>
+                        </a>
+                        <a class="category" data-filter="Beleza" href="#ofertas">
+                            <div>
+                                <strong>
+                                    Beleza ↗
+                                </strong>
+                                <small>
+                                    Seu cuidado diário
+                                </small>
+                            </div>
+                            <span aria-hidden="true" class="icon">
+                                🎀
+                            </span>
+                        </a>
+                        <a class="category" data-filter="Festa" href="#ofertas">
+                            <div>
+                                <strong>
+                                    Festa ↗
+                                </strong>
+                                <small>
+                                    Motivos para celebrar
+                                </small>
+                            </div>
+                            <span aria-hidden="true" class="icon">
+                                🎈
+                            </span>
+                        </a>
+                    </div>
+                </section>
+                <section class="flash" id="ofertas">
+                    <div class="section-head">
+                        <div>
+                            <span class="eyebrow">
+                                02 / Piscou, aproveitou
+                            </span>
+                            <h2>
+                                Ofertas relâmpago ⚡
+                            </h2>
+                            <p id="results-label">
+                                Preços pequenos para aproveitar de montão.
+                            </p>
+                        </div>
+                        <div class="timer">
+                            <span class="timer-label">
+                                Esta rodada termina em
+                            </span>
+                            <span aria-label="Tempo restante da rodada demonstrativa" class="clock" role="timer">
+                                02 : 47 : 18
+                            </span>
+                        </div>
+                    </div>
+                    <div aria-label="Carrossel de ofertas relâmpago" class="carousel" role="region" tabindex="0">
+                        <article class="product" data-category="Limpeza" data-name="Esponja dupla face">
+                            <div class="product-art">
+                                <span aria-label="Ilustração: Esponja dupla face" class="product-emoji" role="img">
+                                    🧽
+                                </span>
+                                <span class="badge">
+                                    ACHADO / 01
+                                </span>
+                            </div>
+                            <div class="product-info">
+                                <small>
+                                    Limpeza
+                                </small>
+                                <h3>
+                                    Esponja dupla face
+                                </h3>
+                                <p class="unit">
+                                    unidade · preço à vista
+                                </p>
+                                <div class="buy-row">
+                                    <strong class="price">
+                                        <small>
+                                            R$
+                                        </small>
+                                        1,00
+                                    </strong>
+                                    <button aria-label="Adicionar Esponja dupla face ao carrinho" class="add" data-product="Esponja dupla face">
+                                        +
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="product" data-category="Papelaria" data-name="Caneta esferográfica azul">
+                            <div class="product-art">
+                                <span aria-label="Ilustração: Caneta esferográfica azul" class="product-emoji" role="img">
+                                    🖊️
+                                </span>
+                                <span class="badge">
+                                    ACHADO / 02
+                                </span>
+                            </div>
+                            <div class="product-info">
+                                <small>
+                                    Papelaria
+                                </small>
+                                <h3>
+                                    Caneta esferográfica azul
+                                </h3>
+                                <p class="unit">
+                                    unidade · preço à vista
+                                </p>
+                                <div class="buy-row">
+                                    <strong class="price">
+                                        <small>
+                                            R$
+                                        </small>
+                                        1,00
+                                    </strong>
+                                    <button aria-label="Adicionar Caneta esferográfica azul ao carrinho" class="add" data-product="Caneta esferográfica azul">
+                                        +
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="product" data-category="Beleza" data-name="Prendedor de cabelo">
+                            <div class="product-art">
+                                <span aria-label="Ilustração: Prendedor de cabelo" class="product-emoji" role="img">
+                                    🎀
+                                </span>
+                                <span class="badge">
+                                    ACHADO / 03
+                                </span>
+                            </div>
+                            <div class="product-info">
+                                <small>
+                                    Beleza
+                                </small>
+                                <h3>
+                                    Prendedor de cabelo
+                                </h3>
+                                <p class="unit">
+                                    unidade · preço à vista
+                                </p>
+                                <div class="buy-row">
+                                    <strong class="price">
+                                        <small>
+                                            R$
+                                        </small>
+                                        1,00
+                                    </strong>
+                                    <button aria-label="Adicionar Prendedor de cabelo ao carrinho" class="add" data-product="Prendedor de cabelo">
+                                        +
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="product" data-category="Limpeza" data-name="Pregador de roupa c/ 12">
+                            <div class="product-art">
+                                <span aria-label="Ilustração: Pregador de roupa c/ 12" class="product-emoji" role="img">
+                                    🧺
+                                </span>
+                                <span class="badge">
+                                    ACHADO / 04
+                                </span>
+                            </div>
+                            <div class="product-info">
+                                <small>
+                                    Limpeza
+                                </small>
+                                <h3>
+                                    Pregador de roupa c/ 12
+                                </h3>
+                                <p class="unit">
+                                    pacote · preço à vista
+                                </p>
+                                <div class="buy-row">
+                                    <strong class="price">
+                                        <small>
+                                            R$
+                                        </small>
+                                        2,00
+                                    </strong>
+                                    <button aria-label="Adicionar Pregador de roupa c/ 12 ao carrinho" class="add" data-product="Pregador de roupa c/ 12">
+                                        +
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="product" data-category="Cozinha" data-name="Pote plástico 500ml">
+                            <div class="product-art">
+                                <span aria-label="Ilustração: Pote plástico 500ml" class="product-emoji" role="img">
+                                    🥡
+                                </span>
+                                <span class="badge">
+                                    ACHADO / 05
+                                </span>
+                            </div>
+                            <div class="product-info">
+                                <small>
+                                    Cozinha
+                                </small>
+                                <h3>
+                                    Pote plástico 500ml
+                                </h3>
+                                <p class="unit">
+                                    unidade · preço à vista
+                                </p>
+                                <div class="buy-row">
+                                    <strong class="price">
+                                        <small>
+                                            R$
+                                        </small>
+                                        2,00
+                                    </strong>
+                                    <button aria-label="Adicionar Pote plástico 500ml ao carrinho" class="add" data-product="Pote plástico 500ml">
+                                        +
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="product" data-category="Cozinha" data-name="Pano de prato">
+                            <div class="product-art">
+                                <span aria-label="Ilustração: Pano de prato" class="product-emoji" role="img">
+                                    🧻
+                                </span>
+                                <span class="badge">
+                                    ACHADO / 06
+                                </span>
+                            </div>
+                            <div class="product-info">
+                                <small>
+                                    Cozinha
+                                </small>
+                                <h3>
+                                    Pano de prato
+                                </h3>
+                                <p class="unit">
+                                    unidade · preço à vista
+                                </p>
+                                <div class="buy-row">
+                                    <strong class="price">
+                                        <small>
+                                            R$
+                                        </small>
+                                        3,50
+                                    </strong>
+                                    <button aria-label="Adicionar Pano de prato ao carrinho" class="add" data-product="Pano de prato">
+                                        +
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="product" data-category="Festa" data-name="Balão nº 9 c/ 50">
+                            <div class="product-art">
+                                <span aria-label="Ilustração: Balão nº 9 c/ 50" class="product-emoji" role="img">
+                                    🎈
+                                </span>
+                                <span class="badge">
+                                    ACHADO / 07
+                                </span>
+                            </div>
+                            <div class="product-info">
+                                <small>
+                                    Festa
+                                </small>
+                                <h3>
+                                    Balão nº 9 c/ 50
+                                </h3>
+                                <p class="unit">
+                                    pacote · preço à vista
+                                </p>
+                                <div class="buy-row">
+                                    <strong class="price">
+                                        <small>
+                                            R$
+                                        </small>
+                                        3,50
+                                    </strong>
+                                    <button aria-label="Adicionar Balão nº 9 c/ 50 ao carrinho" class="add" data-product="Balão nº 9 c/ 50">
+                                        +
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="product" data-category="Festa" data-name="Copo descartável c/ 50">
+                            <div class="product-art">
+                                <span aria-label="Ilustração: Copo descartável c/ 50" class="product-emoji" role="img">
+                                    🥤
+                                </span>
+                                <span class="badge">
+                                    ACHADO / 08
+                                </span>
+                            </div>
+                            <div class="product-info">
+                                <small>
+                                    Festa
+                                </small>
+                                <h3>
+                                    Copo descartável c/ 50
+                                </h3>
+                                <p class="unit">
+                                    pacote · preço à vista
+                                </p>
+                                <div class="buy-row">
+                                    <strong class="price">
+                                        <small>
+                                            R$
+                                        </small>
+                                        3,50
+                                    </strong>
+                                    <button aria-label="Adicionar Copo descartável c/ 50 ao carrinho" class="add" data-product="Copo descartável c/ 50">
+                                        +
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <p class="empty" hidden="">
+                        Nenhum achadinho encontrado.
+                        <button class="reset" type="button">
+                            Ver todos
+                        </button>
+                    </p>
+                    <p class="scroll-hint">
+                        DESLIZE PARA DESCOBRIR → · Rodada demonstrativa
+                    </p>
+                </section>
+                <section class="kit-section" id="combos">
+                    <div>
+                        <span class="eyebrow">
+                            03 / Do seu jeito
+                        </span>
+                        <h2>
+                            Monte
+                            <br/>
+                            seu kit
+                            <span style="color: #b2ff73">
+                                .
+                            </span>
+                        </h2>
+                        <p>
+                            Escolha seus essenciais por R$ 1,00 cada. O kit é seu, a economia também.
+                        </p>
+                        <span aria-hidden="true" style="font-size: 65px">
+                            🧽 + 🖊️ + 🎀
+                        </span>
+                    </div>
+                    <form class="kit-builder">
+                        <div class="kit-options">
+                            <label>
+                                <input checked="" type="checkbox"/>
+                                🧽 Esponja
+                                <span>
+                                    R$ 1
+                                </span>
+                            </label>
+                            <label>
+                                <input checked="" type="checkbox"/>
+                                🖊️ Caneta azul
+                                <span>
+                                    R$ 1
+                                </span>
+                            </label>
+                            <label>
+                                <input checked="" type="checkbox"/>
+                                🎀 Prendedor
+                                <span>
+                                    R$ 1
+                                </span>
+                            </label>
+                            <label>
+                                <input type="checkbox"/>
+                                ✏️ Lápis preto
+                                <span>
+                                    R$ 1
+                                </span>
+                            </label>
+                        </div>
+                        <div class="kit-summary">
+                            <div>
+                                <small>
+                                    Seu kit por
+                                </small>
+                                <div class="kit-total">
+                                    R$ 3,00
+                                </div>
+                            </div>
+                            <button class="cta kit-submit" type="submit">
+                                Adicionar kit +
+                            </button>
+                        </div>
+                    </form>
+                </section>
+                <div class="services">
+                    <div>
+                        <b>
+                            ↗ Vai para todo o Brasil
+                        </b>
+                        <p>
+                            Frete grátis acima de R$ 79,90. Prazo e valor calculados pelo CEP.
+                        </p>
+                    </div>
+                    <div>
+                        <b>
+                            ❖ Pix com 5% off
+                        </b>
+                        <p>
+                            Seu dinheiro vale mais no pagamento à vista.
+                        </p>
+                    </div>
+                    <div>
+                        <b>
+                            ▤ Até 3x sem juros
+                        </b>
+                        <p>
+                            Parcela mínima de R$ 30,00 no cartão.
+                        </p>
+                    </div>
+                    <div>
+                        <b>
+                            ⌂ Retire na loja
+                        </b>
+                        <p>
+                            Retirada grátis. Consulte o endereço pelo WhatsApp.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer id="contato">
+            <div class="wrap">
+                <div class="footer-top">
+                    <div>
+                        <span class="eyebrow">
+                            Entre para a lista
+                        </span>
+                        <h2>
+                            Achou bom?
+                            <br/>
+                            <span>
+                                Tem mais no Whats.
+                            </span>
+                        </h2>
+                        <p>
+                            Receba as próximas ofertas antes de todo mundo.
+                        </p>
+                        <a class="cta" href="https://wa.me/5511999999999">
+                            Quero receber ofertas ↗
+                        </a>
+                    </div>
+                    <div>
+                        <a class="brand" href="#inicio">
+                            Loja da Fernanda ↗
+                        </a>
+                        <p>
+                            (11) 99999-9999 · Seg. a sex., 9h às 18h
+                            <br/>
+                            oi@lojadafernanda.example · Contatos ilustrativos
+                        </p>
+                        <p>
+                            ACEITAMOS / Pix · Visa · Mastercard · Elo
+                        </p>
+                        <div class="footer-links">
+                            <a href="https://www.instagram.com/">
+                                Instagram ↗
+                            </a>
+                            <a href="https://www.facebook.com/">
+                                Facebook ↗
+                            </a>
+                            <a href="https://wa.me/5511999999999">
+                                Atendimento ↗
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-meta">
+                    <span>
+                        © 2026 Loja da Fernanda · CNPJ 00.000.000/0001-00 (ilustrativo)
+                    </span>
+                    <span>
+                        Layout demonstrativo · Preços e condições ilustrativos
+                    </span>
+                </div>
+            </div>
+        </footer>
+        <nav aria-label="Navegação móvel" class="mobile-nav">
+            <a href="#inicio">
+                <span aria-hidden="true" class="nav-icon">
+                    ⌂
+                </span>
+                Início
+            </a>
+            <a href="#categorias">
+                <span aria-hidden="true" class="nav-icon">
+                    ▦
+                </span>
+                Categorias
+            </a>
+            <a href="#busca">
+                <span aria-hidden="true" class="nav-icon">
+                    ⌕
+                </span>
+                Busca
+            </a>
+            <button aria-label="Carrinho com 0 itens" class="cart">
+                <span aria-hidden="true" class="nav-icon">
+                    🛒
+                    <span class="count">
+                        0
+                    </span>
+                </span>
+                Carrinho
+            </button>
+        </nav>
+        <a aria-label="Fale conosco pelo WhatsApp" class="whatsapp" href="https://wa.me/5511999999999" rel="noopener noreferrer" target="_blank">
+            <svg aria-hidden="true" fill="currentColor" height="29" viewBox="0 0 32 32" width="29">
+                <path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 2.3a10.7 10.7 0 1 1-5.5 19.9l-.4-.2-3.8 1 1-3.7-.3-.4A10.7 10.7 0 0 1 16 5.3zm-4.2 5.2c-.3 0-.6.1-.9.4-.3.4-1.1 1.1-1.1 2.7 0 1.6 1.2 3.1 1.4 3.3.2.2 2.4 3.8 6 5.1 3 1.1 3.6.8 4.2.6.7-.2 2-1 2.2-1.9.3-.9.3-1.6.2-1.8-.1-.2-.4-.3-.9-.5l-2.4-1.2c-.3-.1-.5-.2-.8.2l-1.1 1.3c-.2.3-.4.3-.8.1-1.2-.5-2.2-1.1-3-2-.7-.7-1.2-1.5-1.4-1.8-.2-.4 0-.6.1-.8l.6-.7.4-.6c.1-.2.1-.5 0-.7l-1.1-2.5c-.3-.7-.6-.6-.9-.6z">
+                </path>
+            </svg>
+        </a>
+        <div aria-live="polite" class="toast" role="status">
+        </div>
+        <script>
+            (() => {
+                let count = 0;
+                let toastTimeout;
+                const toast = document.querySelector('.toast');
+                const carts = document.querySelectorAll('.cart');
+
+                function notify(message) {
+                    toast.textContent = message;
+                    toast.classList.add('show');
+                    clearTimeout(toastTimeout);
+                    toastTimeout = setTimeout(() => toast.classList.remove('show'), 2800);
+                }
+
+                function addItems(name, quantity = 1) {
+                    count += quantity;
+                    document.querySelectorAll('.count').forEach(badge => badge.textContent = count);
+                    carts.forEach(cart => cart.setAttribute('aria-label', `Carrinho com ${count} ${count === 1 ? 'item' : 'itens'}`));
+                    notify(`${name} adicionado ao carrinho`);
+                }
+
+                document.querySelectorAll('[data-product]').forEach(button => {
+                    button.addEventListener('click', () => addItems(button.dataset.product));
+                });
+                carts.forEach(cart => cart.addEventListener('click', () => {
+                    notify(count ? `Você tem ${count} itens no carrinho. Compra demonstrativa.` : 'Seu carrinho espera seus achadinhos!');
+                }));
+
+                const input = document.querySelector('.search input');
+                const normalize = text => text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+                const cards = [...document.querySelectorAll('.product')];
+                function filter(term, category = false) {
+                    let visible = 0;
+                    cards.forEach(card => {
+                        const text = category ? card.dataset.category : card.dataset.name + ' ' + card.dataset.category;
+                        card.hidden = !normalize(text).includes(normalize(term));
+                        if (!card.hidden) visible++;
+                    });
+                    document.querySelectorAll('.price-tier').forEach(tier => {
+                        tier.hidden = ![...tier.querySelectorAll('.product')].some(card => !card.hidden);
+                    });
+                    document.querySelector('.empty').hidden = visible > 0;
+                    document.querySelector('#results-label').textContent = term ? `${visible} achadinhos para “${term}”` : 'Preços pequenos para aproveitar de montão.';
+                }
+                document.querySelector('.search').addEventListener('submit', event => {
+                    event.preventDefault();
+                    filter(input.value.trim());
+                    document.querySelector('#ofertas').scrollIntoView();
+                });
+                document.querySelectorAll('[data-filter]').forEach(link => {
+                    link.addEventListener('click', () => {
+                        input.value = '';
+                        filter(link.dataset.filter, true);
+                    });
+                });
+                document.querySelector('.reset').addEventListener('click', () => {
+                    input.value = '';
+                    filter('');
+                });
+
+                const clock = document.querySelector('.clock');
+                if (clock) {
+                    const deadline = Date.now() + (2 * 3600 + 47 * 60 + 18) * 1000;
+                    function updateClock() {
+                        const remaining = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
+                        clock.textContent = [Math.floor(remaining / 3600), Math.floor(remaining / 60) % 60, remaining % 60]
+                            .map(value => String(value).padStart(2, '0')).join(' : ');
+                        if (!remaining) {
+                            clearInterval(timer);
+                            document.querySelector('.timer-label').textContent = 'Rodada encerrada';
+                        }
+                    }
+                    const timer = setInterval(updateClock, 1000);
+                    updateClock();
+                }
+
+                const kitForm = document.querySelector('.kit-builder');
+                if (kitForm) {
+                    const choices = [...kitForm.querySelectorAll('input')];
+                    const updateKit = () => {
+                        const selected = choices.filter(choice => choice.checked);
+                        document.querySelector('.kit-total').textContent = (selected.length * 1).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+                        document.querySelector('.kit-submit').disabled = selected.length === 0;
+                    };
+                    choices.forEach(choice => choice.addEventListener('change', updateKit));
+                    kitForm.addEventListener('submit', event => {
+                        event.preventDefault();
+                        const selected = choices.filter(choice => choice.checked);
+                        if (selected.length) addItems('Kit personalizado', selected.length);
+                    });
+                    updateKit();
+                }
+
+                const copyButton = document.querySelector('.copy-coupon');
+                if (copyButton) {
+                    copyButton.addEventListener('click', async () => {
+                        try {
+                            await navigator.clipboard.writeText('FERNANDA10');
+                            copyButton.textContent = 'Copiado! ✓';
+                            notify('Cupom FERNANDA10 copiado!');
+                        } catch {
+                            const code = document.querySelector('.coupon-code');
+                            const selection = window.getSelection();
+                            const range = document.createRange();
+                            range.selectNodeContents(code);
+                            selection.removeAllRanges();
+                            selection.addRange(range);
+                            notify('Selecione e copie o código FERNANDA10.');
+                        }
+                    });
+                }
+            })();
+        </script>
+    </body>
+</html>
